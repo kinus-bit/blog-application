@@ -1,5 +1,5 @@
 import { getUserRole } from "../utils/auth";
-import AdminDashboard from "./AdminDashboard";
+import AdminDashboard from "./Admindashboard";
 import DeveloperDashboard from "./Dashboard";
 import { Navigate } from "react-router-dom";
 
