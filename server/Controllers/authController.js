@@ -7,7 +7,7 @@ const User = require("../models/User");
 exports.signup = async (req, res) => {
 
     //this is because we require them from the user.
-    const { username, email, password,fullName} = req.body;
+    const { username, email, password} = req.body;
 
     // Check if user already exists by email or username
     const emailExists = await User.findOne({ email });
@@ -18,7 +18,7 @@ exports.signup = async (req, res) => {
 
     const hashed = await bcrypt.hash(password, 10);
     //saving to the database
-    const user = await User.create({ username, email, password: hashed,fullName });
+    const user = await User.create({ username, email, password: hashed});
    
 
     const token = jwt.sign({ id: user._id, role: user.role, username: user.username}, process.env.JWT_SECRET, {
